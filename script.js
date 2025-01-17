@@ -53,3 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+        const img = item.querySelector('img');
+        
+        if (img.complete) {
+            // Image is already loaded (probably from cache)
+            item.classList.add('loaded');
+        } else {
+            // Wait for image to load
+            img.onload = () => {
+                item.classList.add('loaded');
+            };
+        }
+    });
+});
