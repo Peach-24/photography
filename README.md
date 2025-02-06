@@ -2,7 +2,10 @@
 A portfolio site for my photography
 
 ## TODO:
-- [ ] set up backend directory for photos (Cloudinary? GCP Firebase?)
+- [x] set up backend directory for photos (Google Cloud Storage)
+- [ ] set up github actions for main branch to upload to Google Cloud Storage
+- [ ] pull images from Google cloud storage backend
 - [ ] add tags for photos 
-- [ ] add dropdown for Gallery / Collections with different
-- [ ] add search functionality (possible tie in with Google image recognition?) 
+- [ ] add dropdown for Gallery / Collections
+- [ ] add search functionality (possible tie in with Google image recognition?)
+
