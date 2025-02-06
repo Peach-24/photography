@@ -1,0 +1,29 @@
+name: Upload to Cloud Storage on Push to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up authentication (if necessary, depends on your cloud provider)
+      - name: Set up Cloud Credentials
+        run: |
+          echo "${{ secrets.CLOUD_STORAGE_KEY }}" > $HOME/.cloud_credentials
+
+      # Step 3: Upload files to cloud storage
+      - name: Upload to Cloud Storage
+        uses: google-github-actions/upload-cloud-storage@v0.2.0
+        with:
+          source: '.'  # Specify the source files or directories to upload
+          destination: 'gs://jtp-photography-2025'  # Specify the destination bucket/path
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
